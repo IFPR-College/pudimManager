@@ -1,0 +1,18 @@
+version: '3'
+services:
+  frontend:
+    build: ./front
+    ports:
+      - "5173:5173"
+  backend:
+    build: ./back
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+  database:
+    image: "sqlite:latest"
+    volumes:
+      - database-data:/data
+volumes:
+  database-data:

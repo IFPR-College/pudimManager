@@ -11,8 +11,6 @@ services:
     depends_on:
       - database
   database:
-    image: "sqlite:latest"
-    volumes:
-      - database-data:/data
+    build: ./back
 volumes:
   database-data:

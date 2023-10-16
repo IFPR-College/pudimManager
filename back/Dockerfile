@@ -14,4 +14,4 @@ RUN pip install uvicorn fastapi
 EXPOSE 8000
 
 # executando o app.py quando o contêiner for iniciado
-CMD ["uvicorn", "main:app", "--host", "134.209.175.180", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"]

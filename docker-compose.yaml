@@ -1,5 +1,7 @@
 version: '3'
 services:
+  database:
+    build: ./bd
   frontend:
     build: ./front
     ports:
@@ -10,7 +12,6 @@ services:
       - "8000:8000"
     depends_on:
       - database
-  database:
-    build: ./bd
+  
 volumes:
   database-data:

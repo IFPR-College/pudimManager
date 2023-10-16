@@ -26,7 +26,7 @@ class Item(BaseModel):
     e_bom: str
 
 
-conn = sqlite3.connect('../bd/pudimManager.db')
+conn = sqlite3.connect('/pudimManager.db')
 cursor = conn.cursor()
 
 

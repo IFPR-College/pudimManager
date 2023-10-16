@@ -8,4 +8,4 @@ WORKDIR /app
 COPY bd.py /app
 
 # executando o script do bd.py(iniciando o banco)
-CMD ["python3", "bd.py"]
+CMD ["python", "banco.py"]

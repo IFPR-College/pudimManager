@@ -1,20 +1,29 @@
-# imagem Node.js como imagem base
-FROM node:14
+FROM node:18-alpine AS build
 
-# diretório de trabalho no conteiner
 WORKDIR /app
 
-# copiando o arquivo package.json e package-lock.json para o conteiner
-COPY package*.json ./
+RUN adduser --disabled-password --gecos '' appuser \
+  && chown -R appuser:appuser /app
+USER appuser
 
-# instalando depedências
+COPY --chown=appuser:appuser . .
+
 RUN npm install
+RUN npm run build
 
-# copiando todo o conteúdo do diretório do projeto para o conteiner
-COPY . .
+# ------ NGINX ------ #
 
-# expondo a porta q vai ser usada pro front
-EXPOSE 5173
+FROM nginx:alpine
 
-# executando a aplicação
-CMD ["npm", "run", "dev"]
+RUN chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx
+USER nginx
+
+COPY --from=build --chown=nginx:nginx /app/dist /usr/share/nginx/html
+COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
+  CMD curl --fail http://localhost/ || exit 1
+
+CMD ["nginx", "-g", "daemon off;"]

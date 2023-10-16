@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 # executando o app.py quando o contêiner for iniciado
-CMD ["uvicorn", "main:app", "--host", , "127.0.0.1", "--port", "8000"]
+CMD ["python","uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"]

@@ -7,8 +7,8 @@ WORKDIR /app
 # copiando o conteúdo do diretório atual para o conteiner em /app
 COPY . /app
 
-# instalando os pacotes necessários descritos no requirements.txt
-RUN pip install -r requirements.txt
+# instalando os pacotes necessários
+RUN pip install uvicorn fastapi
 
 # abrindo a porta 8000
 EXPOSE 8000

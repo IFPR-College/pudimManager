@@ -2,16 +2,20 @@ version: '3'
 services:
   database:
     build: ./bd
+    volumes:
+      - database-data:/data
   frontend:
     build: ./front
     ports:
-      - "5173:5173"
+      - "5173:80"
   backend:
     build: ./back
     ports:
       - "8000:8000"
     depends_on:
       - database
+    volumes:
+      - database-data:/data
   
 volumes:
   database-data:

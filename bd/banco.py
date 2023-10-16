@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('pudimManager.db')
+conn = sqlite3.connect('/data/pudimManager.db')
 
 cursor = conn.cursor()
 

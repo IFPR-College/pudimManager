@@ -5,7 +5,9 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-origins = ["*"]
+origins = [
+    "*"
+]
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,7 +28,7 @@ class Item(BaseModel):
     e_bom: str
 
 
-conn = sqlite3.connect('/pudimManager.db')
+conn = sqlite3.connect('/data/pudimManager.db')
 cursor = conn.cursor()
 
 

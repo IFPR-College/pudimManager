@@ -5,7 +5,7 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # copiando o script
-COPY bd.py /app
+COPY banco.py /app
 
 # executando o script do bd.py(iniciando o banco)
 CMD ["python", "banco.py"]

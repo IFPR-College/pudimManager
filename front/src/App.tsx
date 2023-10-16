@@ -47,7 +47,7 @@ export default function App() {
 
     function getData() {
         axios
-            .get('http://0.0.0.0:8000/items')
+            .get('http://134.209.175.180:8000/items')
             .then((response) => {
                 const { data } = response
                 setData(data)
@@ -95,7 +95,7 @@ export default function App() {
             e_bom: e_bom,
         }
         axios
-            .post('http://0.0.0.0:8000/cadastro', body)
+            .post('http://134.209.175.180:8000/cadastro', body)
             .then((response) => {
                 console.log(response)
                 getData()
@@ -116,7 +116,7 @@ export default function App() {
             e_bom: e_bom,
         }
         axios
-            .put(`http://0.0.0.0:8000/cadastro/${idManipulate}`, body)
+            .put(`http://134.209.175.180:8000/cadastro/${idManipulate}`, body)
             .then((response) => {
                 console.log(response)
                 getData()
@@ -139,7 +139,7 @@ export default function App() {
         setPudimName('')
         setIdManipulate(-1)
         axios
-            .delete(`http://0.0.0.0:8000/remove/${idManipulate}`)
+            .delete(`http://134.209.175.180:8000/remove/${idManipulate}`)
             .then((response) => {
                 console.log(response)
                 getData()

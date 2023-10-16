@@ -11,6 +11,6 @@ services:
     depends_on:
       - database
   database:
-    build: ./back
+    build: ./bd
 volumes:
   database-data:
